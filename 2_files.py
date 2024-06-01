@@ -11,12 +11,28 @@
 5. Сохраните результат в файл referat2.txt
 """
 
+
+def read_file(file) -> str:
+    with open(file, "r", encoding="utf8") as file:
+        lines = " ".join([line.rstrip() for line in file])
+    return lines
+
+
+def safe_file(file, text):
+    with open(file, "w", encoding="utf8") as file:
+        file.write(text)
+
+
 def main():
     """
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    pass
+    print(len(read_file("referat.txt")))
+    print(len(read_file("referat.txt").split(" ")))
+    print(read_file("referat.txt").replace(".", "!"))
+    safe_file("referat2.txt", read_file("referat.txt"))
+
 
 if __name__ == "__main__":
     main()
